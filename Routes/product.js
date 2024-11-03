@@ -1,15 +1,16 @@
+// product.js (Routes)
 import express from 'express';
 import { 
-  addProduct, 
-  deleteProductById, 
-  getProductById, 
-  getProducts, 
-  updateProductById 
+    addProduct, 
+    deleteProductById, 
+    getProductById, 
+    getProducts, 
+    updateProductById 
 } from '../Controllers/product.js';
 import { 
-  addToWishlist, 
-  getWishlist, // Updated to match the function name
-  removeFromWishlist 
+    addToWishlist, 
+    getUserWishlist, 
+    removeFromWishlist 
 } from '../Controllers/Wishlist.js';
 
 const router = express.Router();
@@ -23,7 +24,7 @@ router.delete('/:id', deleteProductById);
 
 // Wishlist Routes
 router.post('/wishlist/add', addToWishlist);
-router.get('/wishlist', getWishlist); // Changed to call getWishlist
+router.get('/wishlist', getUserWishlist); // Updated to just '/wishlist'
 router.delete('/wishlist/remove/:productId', removeFromWishlist);
 
 export default router;
