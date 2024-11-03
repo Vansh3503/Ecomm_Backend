@@ -1,22 +1,29 @@
-import express from 'express'
-import { addProduct, deleteProductById, getProductById, getProducts, updateProductById } from '../Controllers/product.js';
+import express from 'express';
+import { 
+  addProduct, 
+  deleteProductById, 
+  getProductById, 
+  getProducts, 
+  updateProductById 
+} from '../Controllers/product.js';
+import { 
+  addToWishlist, 
+  getUserWishlist, 
+  removeFromWishlist 
+} from '../Controllers/Wishlist.js';
 
 const router = express.Router();
 
-// add product
-router.post('/add',addProduct)
+// Product Routes
+router.post('/add', addProduct);
+router.get('/all', getProducts);
+router.get('/:id', getProductById);
+router.put('/:id', updateProductById);
+router.delete('/:id', deleteProductById);
 
-// get product
-router.get('/all',getProducts)
+// Wishlist Routes
+router.post('/wishlist/add', addToWishlist);
+router.get('/wishlist/user', getUserWishlist);
+router.delete('/wishlist/remove/:productId', removeFromWishlist);
 
-// get product by Id
-router.get('/:id',getProductById)
-
-// update product by Id
-router.put('/:id',updateProductById)
-
-// delete product by Id
-router.delete('/:id',deleteProductById)
-
-
-export default router
+export default router;
