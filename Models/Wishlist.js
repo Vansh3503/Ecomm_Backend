@@ -4,19 +4,15 @@ const wishlistItemSchema = new mongoose.Schema({
   productId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Product",
-    require: true,
+    required: true,
   },
-  title: { type: String, require: true },
-  price: { type: Number, require: true },
-  imgSrc: { type: String, require: true },
+  title: { type: String, required: true },
+  price: { type: Number, required: true },
+  imgSrc: { type: String, required: true },
 });
 
+// Remove userId since there's no user context
 const wishlistSchema = new mongoose.Schema({
-  userId: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "User",
-    require: true,
-  },
   items: [wishlistItemSchema],
 });
 
