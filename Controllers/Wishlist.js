@@ -4,13 +4,13 @@ import { Wishlist } from "../Models/Wishlist.js";
 export const addToWishlist = async (req, res) => {
   const { productId, title, price, imgSrc } = req.body;
 
-  // Here we will simply use a static userId or a given value, as user logic is removed
-  const userId = "default_user"; // You can set this to a static value or retrieve dynamically as needed
+  // Create a static wishlist for demonstration, could be adjusted as needed
+  const wishlistId = "static_wishlist"; // Unique identifier for the wishlist
 
-  let wishlist = await Wishlist.findOne({ userId });
+  let wishlist = await Wishlist.findOne({ userId: wishlistId });
 
   if (!wishlist) {
-    wishlist = new Wishlist({ userId, items: [] });
+    wishlist = new Wishlist({ userId: wishlistId, items: [] });
   }
 
   const itemIndex = wishlist.items.findIndex(
@@ -27,12 +27,12 @@ export const addToWishlist = async (req, res) => {
   res.json({ message: "Item added to wishlist", wishlist });
 };
 
-// Get User Wishlist (now retrieves wishlist without needing user context)
+// Get User Wishlist
 export const getUserWishlist = async (req, res) => {
-  // Using a default userId, can be adjusted to fetch dynamically if needed
-  const userId = "default_user"; // Same as above
+  // Using a static wishlist identifier
+  const wishlistId = "static_wishlist"; 
 
-  let wishlist = await Wishlist.findOne({ userId });
+  let wishlist = await Wishlist.findOne({ userId: wishlistId });
   if (!wishlist) return res.json({ message: "Wishlist not found" });
 
   res.json({ message: "User wishlist", wishlist });
@@ -42,9 +42,9 @@ export const getUserWishlist = async (req, res) => {
 export const removeFromWishlist = async (req, res) => {
   const productId = req.params.productId;
 
-  const userId = "default_user"; // Consistent with above
+  const wishlistId = "static_wishlist"; // Consistent with above
 
-  let wishlist = await Wishlist.findOne({ userId });
+  let wishlist = await Wishlist.findOne({ userId: wishlistId });
   if (!wishlist) return res.json({ message: "Wishlist not found" });
 
   wishlist.items = wishlist.items.filter(
