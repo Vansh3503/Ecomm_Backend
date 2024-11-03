@@ -8,7 +8,7 @@ import {
 } from '../Controllers/product.js';
 import { 
   addToWishlist, 
-  getUserWishlist, 
+  getWishlist, // Updated to match the function name
   removeFromWishlist 
 } from '../Controllers/Wishlist.js';
 
@@ -23,7 +23,7 @@ router.delete('/:id', deleteProductById);
 
 // Wishlist Routes
 router.post('/wishlist/add', addToWishlist);
-router.get('/wishlist', getUserWishlist); // Updated to just '/wishlist'
+router.get('/wishlist', getWishlist); // Changed to call getWishlist
 router.delete('/wishlist/remove/:productId', removeFromWishlist);
 
 export default router;
