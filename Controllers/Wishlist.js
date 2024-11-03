@@ -2,8 +2,7 @@ import { Wishlist } from "../Models/Wishlist.js";
 
 // Add to Wishlist
 export const addToWishlist = async (req, res) => {
-  const { productId, title, price, imgSrc } = req.body;
-  const userId = req.user; // Assume req.user is populated with the logged-in user's ID
+  const { productId, title, price, imgSrc, userId } = req.body; // Get userId from request body
 
   let wishlist = await Wishlist.findOne({ userId });
 
@@ -27,7 +26,7 @@ export const addToWishlist = async (req, res) => {
 
 // Get User Wishlist
 export const getUserWishlist = async (req, res) => {
-  const userId = req.user;
+  const { userId } = req.body; // Get userId from request body
 
   let wishlist = await Wishlist.findOne({ userId });
   if (!wishlist) return res.json({ message: "Wishlist not found" });
@@ -38,7 +37,7 @@ export const getUserWishlist = async (req, res) => {
 // Remove from Wishlist
 export const removeFromWishlist = async (req, res) => {
   const productId = req.params.productId;
-  const userId = req.user;
+  const { userId } = req.body; // Get userId from request body
 
   let wishlist = await Wishlist.findOne({ userId });
   if (!wishlist) return res.json({ message: "Wishlist not found" });
