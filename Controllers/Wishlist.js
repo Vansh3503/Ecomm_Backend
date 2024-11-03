@@ -4,13 +4,12 @@ import { Wishlist } from "../Models/Wishlist.js";
 export const addToWishlist = async (req, res) => {
   const { productId, title, price, imgSrc } = req.body;
 
-  // Create a static wishlist for demonstration, could be adjusted as needed
-  const wishlistId = "static_wishlist"; // Unique identifier for the wishlist
+  // Find the existing wishlist (you might consider a single static wishlist for now)
+  let wishlist = await Wishlist.findOne();
 
-  let wishlist = await Wishlist.findOne({ userId: wishlistId });
-
+  // If no wishlist exists, create a new one
   if (!wishlist) {
-    wishlist = new Wishlist({ userId: wishlistId, items: [] });
+    wishlist = new Wishlist({ items: [] });
   }
 
   const itemIndex = wishlist.items.findIndex(
@@ -29,10 +28,8 @@ export const addToWishlist = async (req, res) => {
 
 // Get User Wishlist
 export const getUserWishlist = async (req, res) => {
-  // Using a static wishlist identifier
-  const wishlistId = "static_wishlist"; 
-
-  let wishlist = await Wishlist.findOne({ userId: wishlistId });
+  // Retrieve the wishlist
+  let wishlist = await Wishlist.findOne();
   if (!wishlist) return res.json({ message: "Wishlist not found" });
 
   res.json({ message: "User wishlist", wishlist });
@@ -42,11 +39,11 @@ export const getUserWishlist = async (req, res) => {
 export const removeFromWishlist = async (req, res) => {
   const productId = req.params.productId;
 
-  const wishlistId = "static_wishlist"; // Consistent with above
-
-  let wishlist = await Wishlist.findOne({ userId: wishlistId });
+  // Find the existing wishlist
+  let wishlist = await Wishlist.findOne();
   if (!wishlist) return res.json({ message: "Wishlist not found" });
 
+  // Filter out the product
   wishlist.items = wishlist.items.filter(
     (item) => item.productId.toString() !== productId
   );
