@@ -1,4 +1,3 @@
-// product.js (Routes)
 import express from 'express';
 import { 
     addProduct, 
