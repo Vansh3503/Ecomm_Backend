@@ -2,7 +2,10 @@ import { Wishlist } from "../Models/Wishlist.js";
 
 // Add to Wishlist
 export const addToWishlist = async (req, res) => {
-  const { productId, title, price, imgSrc, userId } = req.body; // Get userId from request body
+  const { productId, title, price, imgSrc } = req.body;
+
+  // Here we will simply use a static userId or a given value, as user logic is removed
+  const userId = "default_user"; // You can set this to a static value or retrieve dynamically as needed
 
   let wishlist = await Wishlist.findOne({ userId });
 
@@ -24,9 +27,10 @@ export const addToWishlist = async (req, res) => {
   res.json({ message: "Item added to wishlist", wishlist });
 };
 
-// Get User Wishlist
+// Get User Wishlist (now retrieves wishlist without needing user context)
 export const getUserWishlist = async (req, res) => {
-  const { userId } = req.body; // Get userId from request body
+  // Using a default userId, can be adjusted to fetch dynamically if needed
+  const userId = "default_user"; // Same as above
 
   let wishlist = await Wishlist.findOne({ userId });
   if (!wishlist) return res.json({ message: "Wishlist not found" });
@@ -37,7 +41,8 @@ export const getUserWishlist = async (req, res) => {
 // Remove from Wishlist
 export const removeFromWishlist = async (req, res) => {
   const productId = req.params.productId;
-  const { userId } = req.body; // Get userId from request body
+
+  const userId = "default_user"; // Consistent with above
 
   let wishlist = await Wishlist.findOne({ userId });
   if (!wishlist) return res.json({ message: "Wishlist not found" });
