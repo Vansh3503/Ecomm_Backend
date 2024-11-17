@@ -82,9 +82,7 @@ The project is organized into two main directories: **client** (frontend) and **
 └── README.md                      # Project documentation
 
 
-
-
----
+```
 
 ### 🚀 Getting Started
 Follow the steps below to set up and run the project locally using Docker.
