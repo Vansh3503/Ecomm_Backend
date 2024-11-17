@@ -218,7 +218,7 @@ To deploy this application on an **AWS EC2** instance, follow these steps:
    - Access the application using the public IP of your EC2 instance:
    
    ```bash
-   http://http://18.119.29.153:1000
+   http://18.119.29.153:1000
    ```
 
    ```bash
@@ -233,9 +233,9 @@ Since **Caddy** is already included in the Docker setup, it will handle reverse 
 - **Caddy Configuration** is handled within the **Dockerfile** and **Caddyfile**.
 - No need for manual installation or setup of **Caddy** on the server, as it is configured to automatically handle requests over HTTPS and route them to the backend.
 
----
+
 
 
 
 Enjoy using the **Gada Electronics E-Commerce Application**! 🎉
-```
+
