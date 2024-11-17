@@ -1,5 +1,3 @@
-
-```bash
 # Gada Electronics E-Commerce Application
 
 This is a full-fledged MERN stack e-commerce application with JWT authentication and Dockerization. The project includes a **React** frontend, **Express.js** backend, and **MongoDB** for data storage.
@@ -20,35 +18,70 @@ This is a full-fledged MERN stack e-commerce application with JWT authentication
 The project is organized into two main directories: **client** (frontend) and **server** (backend).
 
 ```bash
-/assignment-2-heatflake
-  /Frontend                   # Frontend (React)
-    /public                 # Static files (HTML, images, etc.)
-      index.html            # Main HTML file
-    /src                    # Main application code
-      /components           # Reusable UI components
-        Address.jsx         # Address form component
-        Cart.jsx            # Cart page component
-        Navbar.jsx          # Navbar component
-        product/            # Product-related components
-          ProductDetail.jsx # Product detail page component
-          RelatedProduct.jsx # Related products component
-          SearchProduct.jsx  # Product search component
-          ShowProduct.jsx   # Displaying products component
-        user/               # User-related components
-          Login.jsx         # Login form component
-          Profile.jsx       # User profile component
-          Register.jsx      # Registration form component
-        Wishlist.jsx        # Wishlist component
-      /context               # State management using context API
-        AppState.jsx        # Manages global state
-        AppContext.jsx      # Context provider
-      /images                # Images used in the frontend
-      index.css             # Global CSS styles
-      main.jsx              # Main entry point for React
-      App.jsx               # Main React component
-    package.json            # Frontend dependencies and scripts
-    vite.config.js          # Vite configuration for frontend build
-  /Backend                   # Backend (Express)
+# Project Folder Structure
+
+/assignment-2-heatflake/
+├── Frontend/                      # Frontend (React)
+│   ├── public/                    # Static files (HTML, images, etc.)
+│   │   ├── index.html             # Main HTML file
+│   │   └── ...
+│   ├── src/                       # Main application code
+│   │   ├── components/            # Reusable UI components
+│   │   │   ├── Cart.jsx           # Cart page component
+│   │   │   ├── Navbar.jsx         # Navbar component
+│   │   │   ├── product/           # Product-related components
+│   │   │   │   ├── ProductDetail.jsx # Product detail page component
+│   │   │   │   ├── RelatedProduct.jsx # Related products component
+│   │   │   │   ├── SearchProduct.jsx  # Product search component
+│   │   │   │   └── ShowProduct.jsx   # Displaying products component
+│   │   │   ├── user/              # User-related components
+│   │   │   │   ├── Login.jsx      # Login form component
+│   │   │   │   ├── Profile.jsx    # User profile component
+│   │   │   │   └── Register.jsx   # Registration form component
+│   │   │   ├── Wishlist.jsx       # Wishlist component
+│   │   ├── context/               # State management using Context API
+│   │   │   ├── AppState.jsx       # Manages global state
+│   │   │   └── AppContext.jsx     # Context provider
+│   │   ├── index.css              # Global CSS styles
+│   │   ├── main.jsx               # Main entry point for React
+│   │   └── App.jsx                # Main React component
+│   ├── package.json               # Frontend dependencies and scripts
+│   ├── vite.config.js             # Vite configuration for frontend build
+│   └── ...
+
+├── Backend/                       # Backend (Node.js & Express)
+│   ├── Controllers/               # Controller files
+│   │   ├── cart.js
+│   │   ├── product.js
+│   │   ├── user.js
+│   │   └── wishlist.js
+│   ├── Middlewares/               # Middleware files
+│   │   └── auth.js
+│   ├── Models/                    # Mongoose models
+│   │   ├── Cart.js
+│   │   ├── Product.js
+│   │   ├── User.js
+│   │   └── Wishlist.js
+│   ├── Routes/                    # Route definitions
+│   │   ├── cart.js
+│   │   ├── product.js
+│   │   ├── user.js
+│   │   └── wishlist.js
+│   ├── dist/                      # Compiled backend files
+│   │   ├── index.html
+│   │   └── assets/
+│   │       ├── index-BEMKQIBQ.js
+│   │       └── index-B6IBLkdw.css
+│   ├── server.js                  # Backend entry point
+│   ├── Dockerfile                 # Docker configuration for backend
+│   ├── init-mongo.js              # MongoDB initialization script
+│   └── ...
+
+├── docker-compose.yml             # Docker Compose configuration
+├── Caddyfile                      # Caddy server configuration
+└── README.md                      # Project documentation
+
+/Backend                   # Backend (Express)
     /config                 # Configuration files
       database.js           # MongoDB connection configuration
     /controllers            # Request handlers for different routes
@@ -65,6 +98,8 @@ The project is organized into two main directories: **client** (frontend) and **
       productRoutes.js      # Routes for product operations
     /utils                  # Utility functions and helpers
       auth.js               # JWT authentication middleware
+   /dist
+      
     app.js                  # Express app configuration
     index.js                # Server entry point
   init-mongo.js             # MongoDB initialization script
