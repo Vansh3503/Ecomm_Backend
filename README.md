@@ -81,32 +81,8 @@ The project is organized into two main directories: **client** (frontend) and **
 ├── Caddyfile                      # Caddy server configuration
 └── README.md                      # Project documentation
 
-/Backend                   # Backend (Express)
-    /config                 # Configuration files
-      database.js           # MongoDB connection configuration
-    /controllers            # Request handlers for different routes
-      addressController.js  # Address management logic
-      cartController.js     # Cart management logic
-      productController.js  # Product management logic
-    /models                 # Mongoose models for database schemas
-      addressModel.js       # Address model schema
-      cartModel.js          # Cart model schema
-      productModel.js       # Product model schema
-    /routes                 # Express route definitions
-      addressRoutes.js      # Routes for address operations
-      cartRoutes.js         # Routes for cart operations
-      productRoutes.js      # Routes for product operations
-    /utils                  # Utility functions and helpers
-      auth.js               # JWT authentication middleware
-   /dist
-      
-    app.js                  # Express app configuration
-    index.js                # Server entry point
-  init-mongo.js             # MongoDB initialization script
-  Dockerfile                # Dockerfile for backend containerization (with Caddy and PM2)
-  package.json              # Backend dependencies and scripts
-  README.md                 # Project documentation
-```
+
+
 
 ---
 
